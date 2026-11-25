@@ -16,6 +16,14 @@ Loan EMI and prepayment calculator.
 
 Prepayments reduce the tenure and keep the EMI fixed, which is how most lenders apply part-payments by default.
 
+## Demand
+
+Semrush estimates emicalculator.net, one EMI calculator site, at about 1.1 million visits in a month.
+
+- [Semrush: emicalculator.net](https://tr.semrush.com/website/emicalculator.net/overview)
+
+These figures measure demand for the task, from existing tools. They are third-party estimates or company claims, not usage of this tool.
+
 ## Privacy
 
 Everything runs in your browser. There is no backend, no analytics and no account. Nothing you enter is uploaded.
