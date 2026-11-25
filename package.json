@@ -1,0 +1,12 @@
+{
+  "name": "rin",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Loan EMI and prepayment calculator",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "start": "npx --yes serve -l 5173 ."
+  }
+}

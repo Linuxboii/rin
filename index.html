@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rin - Loan EMI and prepayment calculator</title>
+  <meta name="description" content="Work out your loan EMI, then see how many months and how much interest a monthly extra payment or a one-time lump sum saves. Full amortization schedule as CSV.">
+  <link rel="stylesheet" href="base.css">
+  <style>
+    :root { --accent: #047857; }
+    @media (prefers-color-scheme: dark) { :root { --accent: #10b981; --accent-ink: #052e1f; } }
+    .lumps { display: grid; gap: 8px; }
+    .lump { display: grid; grid-template-columns: 1fr 1.4fr auto; gap: 8px; }
+    .save b { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header class="top"><div class="wrap">
+    <h1>Rin</h1>
+    <p>Your EMI, and exactly what paying a little extra saves you. Runs in your browser, nothing is sent anywhere.</p>
+  </div></header>
+  <main><div class="wrap grid-2">
+    <form class="panel stack" id="form" novalidate>
+      <h2>Loan</h2>
+      <div class="row" style="display:grid;grid-template-columns:1fr 120px;gap:10px">
+        <label class="field">Amount borrowed<input id="principal" type="number" inputmode="decimal" min="1" value="2500000" required></label>
+        <label class="field">Currency<select id="currency"></select></label>
+      </div>
+      <label class="field">Interest rate (% per year)<input id="rate" type="number" inputmode="decimal" step="0.01" min="0" value="8.5" required></label>
+      <label class="field">Tenure (years)<input id="years" type="number" inputmode="decimal" step="0.5" min="0.5" value="20" required></label>
+      <h2 style="margin-top:8px">Prepayment</h2>
+      <label class="field">Extra every month<span class="hint">Paid on top of the EMI, straight to principal.</span><input id="extra" type="number" inputmode="decimal" min="0" value="5000"></label>
+      <div class="stack">
+        <span class="small" style="font-weight:600">One-time payments</span>
+        <div class="lumps" id="lumps"></div>
+        <div><button type="button" id="addLump">Add a lump sum</button></div>
+      </div>
+      <p class="err" id="err" role="alert"></p>
+    </form>
+    <section class="panel stack" aria-live="polite">
+      <h2>Result</h2>
+      <div class="stats">
+        <div class="stat"><b id="emi">-</b><span>Monthly EMI</span></div>
+        <div class="stat"><b id="interest">-</b><span>Total interest, no prepayment</span></div>
+        <div class="stat save"><b id="saved">-</b><span>Interest you save</span></div>
+        <div class="stat save"><b id="months">-</b><span>Earlier loan closure</span></div>
+      </div>
+      <p class="muted small" id="summary"></p>
+      <div class="row"><button class="primary" id="csv" type="button">Download schedule</button></div>
+      <div class="scroll"><table>
+        <thead><tr><th>Month</th><th>Principal</th><th>Interest</th><th>Extra</th><th>Balance</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table></div>
+    </section>
+  </div></main>
+  <footer class="bottom"><div class="wrap">
+    <span>Rin. Free and open source.</span>
+    <span><a href="https://github.com/Linuxboii/rin">Source</a> &nbsp; <a href="https://sushanth.avlokai.com">Made by Sushanth Kasturi</a></span>
+  </div></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
